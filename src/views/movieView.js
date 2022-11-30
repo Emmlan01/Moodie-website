@@ -1,5 +1,8 @@
+
 export default
 function MovieView(props) {
+
+
 
     console.log("props in MovieView", props)
 
@@ -7,10 +10,10 @@ function MovieView(props) {
             props.clickOnReroll(onClick)
         }
 
-        if (!props.movieData || props.movieData.length === 0)
-        {
-        return null;
-        }
+        //if (!props.movieData || props.movieData.length === 0)
+        //{
+        //return null;
+        //}
 
         return(<span onClick={rerollMovieACB(props.movieData)}>
             <img src={"https://image.tmdb.org/t/p/w500"+props.movieData.backdrop_path} height="300"></img>

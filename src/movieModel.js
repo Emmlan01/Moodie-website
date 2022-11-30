@@ -4,11 +4,10 @@ import resolvePromise from "./resolvePromise.js";
 class MovieModel {
 
     constructor(){
-        this.moviePromiseState = {};
         this.currentMovie = {};
     }
 
-    getCurrentMovieDetails(id) {
+    getCurrentMovieDetails(id, moviePromiseState, notify) {
 
         if(id === undefined) return;
 
@@ -16,7 +15,7 @@ class MovieModel {
 
         this.currentMovie = id;
 
-        resolvePromise(getMovieDetails(id), this.moviePromiseState)
+        resolvePromise(getMovieDetails(id), moviePromiseState, notify)
     }
 }
 
