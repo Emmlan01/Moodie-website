@@ -1,11 +1,7 @@
 export default function resolvePromise(promise, promiseState, notify){
-	promiseState.promise= promise;
-    promiseState.data= null;         
-    promiseState.error= null;
-
-    //console.log("promise initiated");
-    //console.log(promise);
-    //console.log(promiseState);
+	promiseState.promise = promise;
+    promiseState.data = null;         
+    promiseState.error = null;
 
     if(promise === null) {
         return("the promise is null!")
@@ -18,17 +14,12 @@ export default function resolvePromise(promise, promiseState, notify){
     function saveDataACB(result){ 
 	    if(promiseState.promise !== promise) return;
             
-            promiseState.data = result
+        promiseState.data = result
             
-            //console.log("data was saved")
-            //console.log(promiseState.data)
-            /* TODO save result in promiseState, as before */
-    
-            if(notify){
-                notify();
-            }
-
-        } 
+        if(notify){
+            notify();
+        }
+    } 
 
     function saveErrorACB(err)  { 
         if(promiseState.promise !== promise) return;
@@ -42,5 +33,3 @@ export default function resolvePromise(promise, promiseState, notify){
     }
     promise.then(saveDataACB).catch(saveErrorACB);
 }
-
-//{resolvePromise};

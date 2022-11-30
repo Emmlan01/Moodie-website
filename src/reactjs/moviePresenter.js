@@ -1,32 +1,33 @@
 import promiseNoData from "../views/promiseNoData"
 import MovieView from "../views/movieView.js"
+import { useState, useEffect } from "react";
 
-import { useState } from "react";
+export default function Movie(props) {
 
-export default
-function Movie(props) {
-
-    //const moviePromiseState = {};
-
-    //Initially when you enter website:
+    // This is used to make the component stateful. The upper useState() sets an empty moviePromiseState. The lower doesn't store any state information but is
+    // solely used to force re-renders upon calls to the moviePromiseStateChanged function (See lecture slide 119 - 135 for further explanations of what is going on here).
     const[moviePromiseState] = useState({});
     const[, moviePromiseStateChanged] = useState();
-    //console.log("ffisefn", moviePromiseState);
 
-    function notify(){
-        //console.log("here be the promiseState in notify", moviePromiseState);
-        moviePromiseStateChanged(new Object());
+    // Used to do an initial get when the Movie component is created.
+    useEffect( initialGetCurrentMovieDetails, []);
+
+    // This callback function is used to do an initial getCurrentMovieDetails, updating the moviePromiseState.
+    // This should most likely be deprecated later on.
+    function initialGetCurrentMovieDetails(){
+        // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
+        props.model.getCurrentMovieDetails(500, moviePromiseState, notify)
     }
 
-    props.model.getCurrentMovieDetails(/**/500, moviePromiseState, notify);
+    // This function is used to notify React of changes in the moviePromiseState. It is called 
+    function notify(){
+       moviePromiseStateChanged(new Object());
+    }
 
-    function rerollClickACB(id) {
-    /*TODO call a function which generates a new movie ID */
-    
+    // *TODO* - call a function which generates a new movie ID
+    function rerollClickACB(id){}
 
-   }
+    // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
+    return (<div>{promiseNoData(moviePromiseState) || <MovieView movieData={moviePromiseState.data} clickOnReroll={rerollClickACB}/>}</div>)
 
-    console.log("just before view");
-    console.log(moviePromiseState);
-    return promiseNoData(moviePromiseState) || <MovieView movieData={moviePromiseState.data} clickOnReroll={rerollClickACB}/>
 }
