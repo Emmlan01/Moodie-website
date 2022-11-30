@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import MovieModel from './movieModel';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+let model = new MovieModel();
 root.render(
   <React.StrictMode>
-    <App />
+    <App model={model}/>
   </React.StrictMode>
 );
 
