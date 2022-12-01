@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import mainModel from './mainModel.js'
 import MovieModel from './movieModel';
+import WeatherModel from './weatherModel.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let model = new MovieModel();
+/*let movieModel = new MovieModel();
+let weatherModel = new weatherModel();*/
+
+let model = new mainModel()
+
+
+
 root.render(
   <React.StrictMode>
     <App model={model}/>
