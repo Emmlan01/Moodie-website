@@ -1,7 +1,8 @@
 import { getMovieDetails } from "./movieSource.js"
+import { getWeather } from './weatherSource.js'
 import resolvePromise from "./resolvePromise.js";
 
-class MovieModel {
+class mainModel {
 
     constructor(){
         this.currentMovie = {};
@@ -21,6 +22,15 @@ class MovieModel {
     getRandomMovieId() {
         
     }
+
+    getCurrentWeather(lat, lon, weatherPromiseState, notify) {
+
+        if(lat === undefined) return;
+
+        if(lon === undefined) return;
+
+        resolvePromise(getWeather(lat, lon), weatherPromiseState, notify)
+    }
 }
 
-export default MovieModel;
+export default mainModel;
