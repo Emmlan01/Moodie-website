@@ -24,7 +24,7 @@ A.  Most of the intended features have back-end support implemented. Most of the
 FILE STRUCTURE:
 
 ## src:
-  App.css - Aite styling
+  App.css - Site styling
   
   App.js - App root
   
