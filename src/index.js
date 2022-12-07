@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import mainModel from './mainModel.js'
-import MovieModel from './movieModel';
-import WeatherModel from './weatherModel.js'
+//import MovieModel from './movieModel';
+//import WeatherModel from './weatherModel.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 /*let movieModel = new MovieModel();
