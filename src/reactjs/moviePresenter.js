@@ -16,7 +16,8 @@ export default function Movie(props) {
     // This should most likely be deprecated later on.
     function initialGetCurrentMovieDetails(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
-        props.model.getCurrentMovieDetails(55, moviePromiseState, notify)
+        props.model.getCurrentMovieDetails(55, moviePromiseState, notify);
+        props.model.getUserLocation();
     }
 
     // This function is used to notify React of changes in the moviePromiseState. It is called 
