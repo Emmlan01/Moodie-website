@@ -24,7 +24,8 @@ function determineBackground(weatherId) {
     if (weatherId > 199 && weatherId < 233) {
         return <section class="rain-container">
             <div className="rain">
-            <div className="thunder"></div>
+            <div className="thunder">
+            </div>
             </div>
             </section>
     }

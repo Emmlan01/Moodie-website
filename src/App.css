@@ -181,26 +181,6 @@
   }
 }
 
-.center-center {
-  height: 100%;
-  width: 100%;
-
-}
-
-.center-fullscreen {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-
 .mist {
   position: absolute;
   min-height: 100vh;
@@ -249,4 +229,24 @@
   100% {
     transform: translate3d(-200vw, 0, 0);
   }
+}
+
+.center-center {
+  height: 100%;
+  width: 100%;
+
+}
+
+.center-fullscreen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
