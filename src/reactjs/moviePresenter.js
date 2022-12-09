@@ -27,8 +27,7 @@ export default function Movie(props) {
 
     // *TODO* - call a function which generates a new movie ID
     function rerollClickACB(id){
-        console.log("SHAMONEEEE", id)
-        determineWeather(id)
+        //determineWeather(id)
     }
 
     // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
