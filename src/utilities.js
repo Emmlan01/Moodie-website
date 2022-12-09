@@ -1,5 +1,4 @@
-import city from "./assets/city.jpg"
-import { weatherData } from "./views/weatherView"
+
 
 function determineWeather(weatherId) {
 
