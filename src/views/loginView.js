@@ -38,7 +38,7 @@ import '../App.css';
               Register an account! <Link to="/register">Register here</Link>
             </div>
             <div>
-              Log in as a guest <Link to="/register">here</Link>    {/*Ändra path så vi kommer till startsidan och kan generera en film som gäst */} 
+              Log in as a guest <Link to="/home">here</Link>    {/*Ändra path så vi kommer till startsidan och kan generera en film som gäst */} 
             </div>
           </div>
         </div>
