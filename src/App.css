@@ -250,3 +250,31 @@
   bottom: 0;
   margin: auto;
 }
+
+/*FÖR INLOGGNING */
+.login {
+  height: 100vh;    /*Så login hamnar i centrum*/
+  width: 100xvw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.loginFormation {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.loginBox {
+  padding: 10px;
+  margin-bottom: 3px; /*Mellanrum mellan rutorna*/
+}
+.loginButton {
+  padding: 10px;
+  margin-bottom: 3px;
+  background-color: rgb(98, 147, 238);
+}
+
+.login {
+  margin-top: 3px;
+}
