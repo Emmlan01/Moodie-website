@@ -25,19 +25,19 @@ import '../App.css';
           <div className="loginFormation">
             <input type="email" id = "email" className="loginBox" value={email} onChange={setEmailCB} placeholder="Email"/>
             <input type="password" id = "password" className="loginBox" value={password} onChange={setPasswordCB} placeholder="Password"/>
-            <button className="loginButton" onClick={logInWithEmailAndPasswordACB}>
+            <button className="p-2.5 mb-0.5 bg-[rgb(98,147,238)]" onClick={logInWithEmailAndPasswordACB}>
               Login
             </button>
-            <button className="loginButton" onClick={signInWithGoogle}>
+            <button className="p-2.5 mb-0.5 bg-[rgb(98,147,238)]" onClick={signInWithGoogle}>
               Login with Google
             </button>
-            <div>
+            <div className="text-white">
               <Link to="/reset">Forgot Password</Link>
             </div>
-            <div>
+            <div className="text-white">
               Register an account! <Link to="/register">Register here</Link>
             </div>
-            <div>
+            <div className="text-white">
               Log in as a guest <Link to="/home">here</Link>    {/*Ändra path så vi kommer till startsidan och kan generera en film som gäst */} 
             </div>
           </div>
