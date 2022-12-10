@@ -18,16 +18,10 @@ export default function Movie(props) {
     // This should most likely be deprecated later on.
     function initialGetCurrentMovieDetails(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
-      
+
         props.model.getCurrentMovieDetails(55, moviePromiseState, notify);
+        props.model.getUserLocation();
 
-        // This is just used for testing. There is a total number of 19 genres that can be used which we might as well store locally in the app so we don't
-        // need to request the list from the API.
-        getMovieGenres();
-
-        // This function may be called to get a list of movies by genres. The genre list is comma separated so movies belonging to several genres may be chosen.
-        // This should be relocated to a better location when the app is finished, of course.
-        getMovieListByGenre("37");
     }
 
     // This function is used to notify React of changes in the moviePromiseState. It is called 
