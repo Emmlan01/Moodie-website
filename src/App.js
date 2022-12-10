@@ -3,6 +3,7 @@ import './App.css';
 import { getMovieDetails } from './movieSource.js'
 import MovieModel from './movieModel';
 import { getCurrentWeather } from './weatherSource.js'
+
 import React from "react";
 import {Helmet} from "react-helmet";
 
