@@ -29,6 +29,25 @@ function getMovieDetails(params) {
 }
     
 
+function getMovieGenres(params) {
+
+    function transformSearchResultsACB(response){
+        console.log("hifjg", response);
+        return response;
+    }
+
+    // Params equals {movie_id} - get details of certain movie with ID
+    const endpoint = '/genre/movie/list'+params;
+
+    console.log("test", params);
+
+    // fetch to get recipe info and return a (pinky)promise. 
+    return fetch(BASE_URL+ endpoint + "?api_key=" + API_KEY + "&language=en-US", {
+        method: 'GET',
+    }
+    ).then(treatHTTPResponseACB).then(transformSearchResultsACB);
+}
+
 //Params passed as movie_id
 /*function getMovieImages(params){
 
@@ -46,4 +65,4 @@ function getMovieDetails(params) {
     ).then(treatHTTPResponseACB).then(transformSearchResultsACB);
 }*/
 
-export {getMovieDetails, /*getMovieImages*/}
+export {getMovieDetails, getMovieGenres}

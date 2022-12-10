@@ -30,7 +30,7 @@ export default function Weather(props) {
     // This should most likely be deprecated later on.
     function initialGetCurrentWeather(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
-        props.model.getCurrentWeather(39, 127, weatherPromiseState, notify)
+        props.model.getCurrentWeather(5, 25, weatherPromiseState, notify)
     }
 
     // This function is used to notify React of changes in the moviePromiseState. It is called 
