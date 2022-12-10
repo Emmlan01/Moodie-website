@@ -4,7 +4,6 @@ import { API_KEY, BASE_URLCORD, BASE_URLWEATHER } from "./weatherConfig";
 function treatHTTPResponseACB(response){
 
     if(!response.ok)  {
-        console.log("hej!")
     throw new Error("Something that wasn't supposed to happen, happened: " + response.status);
     }
     

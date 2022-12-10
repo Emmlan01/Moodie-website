@@ -1,6 +1,7 @@
 import promiseNoData from "../views/promiseNoData"
 import MovieView from "../views/movieView.js"
 import { useState, useEffect } from "react";
+import { determineWeather } from "../utilities";
 
 export default function Movie(props) {
 
@@ -16,7 +17,7 @@ export default function Movie(props) {
     // This should most likely be deprecated later on.
     function initialGetCurrentMovieDetails(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
-        props.model.getCurrentMovieDetails(55, moviePromiseState, notify)
+        props.model.getCurrentMovieDetails(802, moviePromiseState, notify)
     }
 
     // This function is used to notify React of changes in the moviePromiseState. It is called 
@@ -25,7 +26,9 @@ export default function Movie(props) {
     }
 
     // *TODO* - call a function which generates a new movie ID
-    function rerollClickACB(id){}
+    function rerollClickACB(id){
+        //determineWeather(id)
+    }
 
     // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
     return (<div>{promiseNoData(moviePromiseState) || <MovieView movieData={moviePromiseState.data} clickOnReroll={rerollClickACB}/>}</div>)
