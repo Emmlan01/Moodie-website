@@ -1,6 +1,7 @@
 import promiseNoData from "../views/promiseNoData"
 import MovieView from "../views/movieView.js"
 import { useState, useEffect } from "react";
+
 import { getMovieGenres, getMovieListByGenre } from "../movieSource";
 
 export default function Movie(props) {
@@ -17,6 +18,7 @@ export default function Movie(props) {
     // This should most likely be deprecated later on.
     function initialGetCurrentMovieDetails(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
+      
         props.model.getCurrentMovieDetails(55, moviePromiseState, notify);
 
         // This is just used for testing. There is a total number of 19 genres that can be used which we might as well store locally in the app so we don't
@@ -34,7 +36,9 @@ export default function Movie(props) {
     }
 
     // *TODO* - call a function which generates a new movie ID
-    function rerollClickACB(id){}
+    function rerollClickACB(id){
+        //determineWeather(id)
+    }
 
     // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
     return (<div>{promiseNoData(moviePromiseState) || <MovieView movieData={moviePromiseState.data} clickOnReroll={rerollClickACB}/>}</div>)

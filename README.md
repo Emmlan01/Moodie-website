@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Moodie - Dynamic movie recommendations based on the users local weather and time.
 
-## Available Scripts
+Q.  What is Moodie?
 
-In the project directory, you can run:
+A.  Moodie is a web application that can dynamically recommend movies to watch based on the current time of day and weather at the users location.
+    The movie recommendations are tailored to suit the mood that the weather and time create. For example: The app may suggest horror movies during
+    a rainy night, or a comedy when the sun is shining.
+    
+Q.  What has currently been added?
 
-### `npm start`
+A.  The app currently has back-end support for most of the main functionality intended to be provided, but they have not yet been fully implemented in the
+    intended workflow. Weather, time and movie data may be fetched but the site does not currently provide proper dynamic recommendations, nor is the
+    site layout complete.
+    
+Q.  What will be added in the future?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A.  Most of the intended features have back-end support implemented. Most of the work which remains pertains to dynamically recommending movies based
+    on fetched data. The site will also receive a significant facelift with a dynamic background which changes to reflect the weather/time status at the    
+    user's location. Site login and persistence will also be added.
+    
+***********************************************************************************************
+FILE STRUCTURE:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## src:
+  App.css - Site styling
+  
+  App.js - App root
+  
+  firebaseModel - Used for firebase test purposes
+  
+  index.css - Default css generated during project creation, not used.
+  
+  index.js - Root element of the entire project, call to create model.
+  
+  logo.svg - Default react logo, will be removed
+  
+  mainModel.js - Model used to keep track of some data needed for the site to function. The site uses the MVP design pattern, where this model is the M.
+  
+  movieModel.js - Old model, replaced by mainModel. Deprecated.
+  
+  movieSource.js - Contains some functions used to fetch data about movies.
+  
+  reportWebVitals.js - React default
+  
+  resolvePromise.js - Used to resolve promises. Also accepts notify functions which may be used to re-render the app, etc.
+  
+  setupTests.js - React default
+  
+  weatherModel.js - Old and replaced by mainModel. Deprecated.
+  
+  weatherSource.js - Contains some functions used to fetch data about time and weather.
+  
+  ## reactjs
+  
+  moviePresenter.js - Presenter that keeps track of state information pertaining to movies, functions to re-render the app, etc. Communication between model
+                      and view according to the MVP design pattern.
+  
+  weatherPresenter.js - Presenter that keeps track of state information pertaining to time and weather. -''-
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  ## views
+  
+  movieView.js - View which displays movie related content. Adheers to the MVP design pattern.
+  
+  weatherVies.js - View which displays weather related content. -''-
+  
+  promiseNoData.js - Used when there is nothing else to display, i.e. no data.
+  
