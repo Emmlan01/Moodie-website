@@ -26,7 +26,7 @@ export default
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset" element={<ForgotPassword />} />
-          <Route exact path="/home" element={(<><Movie model={props.model} /><Weather model={props.model} /></>)} />
+          <Route exact path="/home" element={(<><Weather model={props.model} /><Movie model={props.model} /></>)} />
         </Routes>
       </Router>
       {/* </div> */}
