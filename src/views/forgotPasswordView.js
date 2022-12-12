@@ -1,32 +1,30 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { sendPasswordReset } from "../firebase";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import '../App.css';
 
-function Reset() {
-  const [email, setEmail] = useState("");
+function ForgotPasswordView(props) {
 
   function setEmailACB(event){
-    setEmail(event.target.value);
+    props.setEmail(event.target.value);
 }
 
 function resetPasswordACB(){
-  sendPasswordReset(email);
+  props.resetPassword();
 }
 
   return (
     <div className="login">
       <div className="loginFormation">
-        <input type="email" id="email" className="loginBox" value={email} onChange={setEmailACB} placeholder="Email" />
+        <input type="email" id="email" className="loginBox" onChange={setEmailACB} placeholder="Email" />
         <button className="loginButton" onClick={resetPasswordACB}>
           Send password reset email
         </button>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+        <div className="text-white">
+          Don't have an account? <NavLink to="/register">Register</NavLink> now.
         </div>
       </div>
     </div>
   );
 }
 
-export default Reset;
+export default ForgotPasswordView;
