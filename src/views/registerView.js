@@ -1,47 +1,31 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  registerWithEmailAndPassword,
-  signInWithGoogle,
-} from "../firebase";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import '../App.css';
 
-function Register(){
-    
-    const[email, setEmail] = useState(" ");
-    const[password, setPassword] = useState(" ");
-    const[name, setName] = useState(" ");
-   
-    function registerWithNameEmailPasswordACB(){
-    registerWithEmailAndPassword(name, email, password);
-    }
+function Register(props){
 
-    function setNameACB(event){
-      setName(event.target.value);
+   async function registerWithEmailPasswordACB(event){
+      event.preventDefault();
+      props.registerWithEmailPassword();
     }
 
     function setEmailACB(event){
-        setEmail(event.target.value);
-    }
+      props.setEmail(event.target.value);
+  }
 
-    function setPasswordACB(event){
-        setPassword(event.target.value);
-    }
-
+  function setPasswordACB(event){
+      props.setPassword(event.target.value);
+  }
     return (
         <div className="login">
           <div className="loginFormation">
-            <input type="name" id= "name" className="loginBox" value={name} onChange={setNameACB} placeholder="Full Name"/>
-            <input type="email" id="email" className="loginBox" value={email} onChange={setEmailACB} placeholder="Email"/>
-            <input type="password" id="password" className="loginBox" value={password} onChange={setPasswordACB} placeholder="Password"/>
-            <button className="loginButton" onClick={registerWithNameEmailPasswordACB}>
+            <input type="email" id="email" className="loginBox" onChange={setEmailACB} placeholder="Email"/>
+            <input type="password" id="password" className="loginBox" onChange={setPasswordACB} placeholder="Password"/>
+            <button className="loginButton" onClick={registerWithEmailPasswordACB}>
               Register
             </button>
-            <button className="loginButton" onClick={signInWithGoogle}>
-              Register with Google
-            </button>
-            <div>
-              Already have an account? <Link to="/">Login here</Link>
+            <div className="text-white">
+              Already have an account? <NavLink to="/">Login here</NavLink>
             </div>
           </div>
         </div>
