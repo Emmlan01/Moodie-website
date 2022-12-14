@@ -4,10 +4,13 @@ import resolvePromise from "./resolvePromise.js"
 
 class mainModel {
 
-    constructor(){
+    constructor(dishArray=[]){
         this.currentMovie = {};
         this.userLatitude = "";
         this.userLongitude = "";
+        this.movies = dishArray;
+        this.observers = []
+
     }
 
     getCurrentMovieDetails(id, moviePromiseState, notify) {
@@ -51,6 +54,65 @@ class mainModel {
             console.log("Geolocation not supported.")
         }
     }
+
+    //Add movies to users personal saved movie list
+    addMovieToPersonalList(movieToAdd){
+        function movieInListCB(movie){
+            return movie.id === movieToAdd.id
+        }
+        if (!this.movies.find(movieInListCB)){
+            this.movies= [...this.movies, movieToAdd];
+            this.notifyObservers({addMovie:movieToAdd})
+        }
+    }
+
+    //Removie movies from the personal movie list
+    removeFromMovieFromList(movieToRemove){
+        function movieInListCB(movie){
+            return movie.id === movieToRemove.id
+        }
+        if (this.movies.find(movieInListCB)){
+            function hasSameIdCB(movie){
+                    return movie.id != movieToRemove.id;
+            }
+            this.movies = this.movies.filter(hasSameIdCB); 
+            this.notifyObservers({movieRemove:movieToRemove})    
+        }
+    }
+
+    setCurrentMovie(id){
+        function notifyObsACB(){
+            console.log("HEJ");
+            this.notifyObservers({})
+        }
+        console.log("majs", id, this.currentMovie);
+
+        if (id !==null && id !== this.currentMovie) {
+            console.log("mafgtijs", id, this.currentMovie);
+            this.currentMovie = id;
+            resolvePromise(getMovieDetails(id), this.currentMoviePromiseState, notifyObsACB.bind(this))
+            this.notifyObservers({currentMovie:id})
+        }      
+    }
+
+    addObserver(callback){
+        this.observers = [...this.observers, callback]
+    }
+
+    removeObserver(callback){
+        function filterObserversCB(obsCallback){
+            if (obsCallback = callback){return false}
+        }
+        this.observers = this.observers.filter(filterObserversCB)
+    }
+
+    notifyObservers(payload){
+        function invokeObserverCB(obs){obs(payload)}
+        try{
+        this.observers.forEach(invokeObserverCB)
+        }catch(err){console.log(err)}
+    }
+
 }
 
 export default mainModel;

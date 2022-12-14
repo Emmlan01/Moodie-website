@@ -14,6 +14,8 @@ const Weather = require("./reactjs/weatherPresenter.js").default;
 const Login = require("./reactjs/loginPresenter.js").default;
 const Register = require("./reactjs/registerPresenter.js").default;
 const ForgotPassword = require("./reactjs/forgotPasswordPresenter.js").default;
+const Sidebar = require("./reactjs/sidebarPresenter.js").default;
+
 
 export default
   function App(props) {
@@ -24,7 +26,7 @@ export default
       {/* <div className="app">⁄ */}
       <Router>
         <Routes>
-          <Route exact path="/home" element={(<><Weather model={props.model} /><Movie model={props.model} /></>)} />
+          <Route exact path="/home" element={(<><Weather model={props.model}/> <Movie model={props.model} /> </>)} />
           <Route exact path="/" element={<Login model={props.model}/>} />
           <Route exact path="/register" element={<Register model={props.model} />} />
           <Route exact path="/forgotPassword" element={<ForgotPassword model={props.model} />} />
