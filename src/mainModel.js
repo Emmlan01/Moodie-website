@@ -6,8 +6,13 @@ class mainModel {
 
     constructor(){
         this.currentMovie = {};
+        this.currentWeatherID = "something";
         this.userLatitude = "";
         this.userLongitude = "";
+    }
+
+    setCurrentWeatherID(ID){
+        this.currentWeatherID = ID;
     }
 
     getCurrentMovieDetails(id, moviePromiseState, notify) {
@@ -19,10 +24,6 @@ class mainModel {
         this.currentMovie = id;
 
         resolvePromise(getMovieDetails(id), moviePromiseState, notify)
-    }
-
-    getRandomMovieId() {
-        
     }
 
     getCurrentWeather(lat, lon, weatherPromiseState, notify) {

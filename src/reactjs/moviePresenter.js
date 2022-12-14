@@ -1,8 +1,9 @@
 import promiseNoData from "../views/promiseNoData"
 import MovieView from "../views/movieView.js"
 import { useState, useEffect } from "react";
+import { rerollMovie } from "../movieSource";
 
-import { getMovieGenres, getMovieListByGenre } from "../movieSource";
+import { getMovieGenres } from "../movieSource";
 
 export default function Movie(props) {
 
@@ -24,16 +25,25 @@ export default function Movie(props) {
 
     }
 
-    // This function is used to notify React of changes in the moviePromiseState. It is called 
+    // This function is used to notify React of changes in the moviePromiseState, triggering a re-render of the component.
     function notify(){
-       moviePromiseStateChanged(new Object());
+        moviePromiseStateChanged(new Object());
     }
 
     // *TODO* - call a function which generates a new movie ID
-    function rerollClickACB(id){
-        //determineWeather(id)
+    async function rerollMovieACB(){
+        //console.log(props.model.currentWeatherID.data.weather[0].id);
+        
+        //await props.model.getCurrentMovieDetails(100, moviePromiseState, notify);
+        //console.log("there ya go");
+        const selectables = await rerollMovie(37);                              // This is used to do a call to find the amount of selectable pages of movies
+        const page =  Math.floor(Math.random() * selectables.total_pages);      // This is used to select a page.
+        const selectableMovies = await rerollMovie(37, page);                   // This gets the selected page
+        const movie = selectableMovies.results[Math.floor(Math.random() * 20)];
+        props.model.getCurrentMovieDetails(movie.id, moviePromiseState, notify);
+        
     }
 
     // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
-    return (<div>{promiseNoData(moviePromiseState) || <MovieView movieData={moviePromiseState.data} clickOnReroll={rerollClickACB}/>}</div>)
+    return (<div>{promiseNoData(moviePromiseState) || <MovieView movieData={moviePromiseState.data} clickOnReroll={rerollMovieACB}/>}</div>)
 }
