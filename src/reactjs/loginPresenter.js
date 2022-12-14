@@ -28,6 +28,11 @@ function LoginPresenter(){
         console.log(errorCode, errorMessage)
     });}
 
+    function guestLogin(){
+      localStorage.setItem('guestLoggedIn', 'true')
+      navigate("/home")
+    }
+
 
     //Google Authentication function that displays with a pop-up window from Firebase
   async function signInWithGoogle(){
@@ -60,6 +65,7 @@ function LoginPresenter(){
         setPassword = {setPassword}
        signIn ={signIn}
        signInWithGoogle = {signInWithGoogle}
+       guestLogin={guestLogin}
        />
       );
 }

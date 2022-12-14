@@ -22,6 +22,9 @@ function resetPasswordACB(){
         <div className="text-white">
           Don't have an account? <NavLink to="/register">Register</NavLink> now.
         </div>
+        <div className="text-white">
+           <NavLink to="/">Go back to login</NavLink>
+        </div>
       </div>
     </div>
   );

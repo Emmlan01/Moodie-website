@@ -7,35 +7,42 @@ import { useNavigate} from "react-router-dom";
 
 export default
 function WeatherView(props) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const guestLoggedIn = localStorage.getItem('guestLoggedIn')
 
-    //Firebase handles persistance by default. This means that we need to call this function to check wehater a user is logged out or not.
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log("användare", user)
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
+ //Firebase handles persistance by default. This means that we need to call this function to check wehater a user is logged out or not.
+ const auth = getAuth();
+ onAuthStateChanged(auth, (user) => {
+   if (user) {
+     console.log("användare", user)
+     // User is signed in, see docs for a list of available properties
+     // https://firebase.google.com/docs/reference/js/firebase.User
+     const uid = user.uid;
+     // ...
+   } else if (guestLoggedIn === 'false') {
+     // User is signed out
+     // ...
+     navigate("/");
+   }
+ });
 
-const logOut = () => {
+ const logOut = () => {
   //logout function
-  signOut(auth).then(() => {
-    console.log("test", auth)
+  if (guestLoggedIn !== 'false') {
+    localStorage.setItem('guestLoggedIn', 'false')
     navigate("/");
-    console.log("signed out successful")
-    // Sign-out successful.
-  }).catch((error) => {
-    console.error(error);
-
+  } 
+  else {
+    signOut(auth).then(() => {
+      console.log("test", auth)
+      navigate("/");
+      console.log("signed out successful")
+      // Sign-out successful.
+    }).catch((error) => {
+      console.error(error);
     // An error happened.
   });
+}
 };
 
         return(
