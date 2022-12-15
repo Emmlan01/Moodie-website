@@ -71,7 +71,7 @@ function NavbarView () {
 
               <ul className="flex p-4 flex-row space-x-8 mt-0 dark:bg-neutral-900">
                 <li>
-                  <a href="#" className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">Home</a>
+                  <a href="" className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">Home</a>
                 </li>
                 <li>
                   <a href="#" className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">About Us</a>
@@ -81,6 +81,11 @@ function NavbarView () {
                 </li>
               </ul>
             </div>
+            <button className="absolute right-4" onClick={logOut}>
+                    <p className="block text-black bg-white px-2 py-0.5 font-semibold rounded md:dark:hover:text-white">
+                    Sign out
+                    </p>
+                </button>
             </div>
           </nav>)
 }
