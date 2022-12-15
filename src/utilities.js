@@ -1,26 +1,27 @@
 
+// This function prints out the name of the weathertype in the console based on the supplied weatherID.
+function determineWeather(weatherID) {
 
-function determineWeather(weatherId) {
-
-        if (weatherId > 199 && weatherId < 233)
+        if (weatherID > 199 && weatherID < 233)
             console.log("THUNDERSTORM")
-        else if  (weatherId > 299 && weatherId < 322)
+        else if  (weatherID > 299 && weatherID < 322)
             console.log("DRIZZLE")
-        else if  (weatherId > 499 && weatherId < 532)
+        else if  (weatherID > 499 && weatherID < 532)
             console.log("RAIN")
-        else if  (weatherId > 599 && weatherId < 623)
+        else if  (weatherID > 599 && weatherID < 623)
             console.log("SNOW")
-        else if  (weatherId > 700 && weatherId < 782) 
+        else if  (weatherID > 700 && weatherID < 782) 
             console.log("MIST")
-        else if  (weatherId === 800)
+        else if  (weatherID === 800)
             console.log("CLEAR")
-        else if (weatherId > 800 && weatherId < 805) {
-            console.log("cloudsyZzZ")
-        }
-    }
+        else if (weatherID > 800 && weatherID < 805) {
+        console.log("CLOUDY")
+       }
+}
 
-function determineBackground(weatherId) {
-    if (weatherId > 199 && weatherId < 233) {
+
+function determineBackground(weatherID) {
+    if (weatherID > 199 && weatherID < 233) {
         return <section class="rain-container">
             <div className="rain">
             <div className="thunder">
@@ -28,22 +29,24 @@ function determineBackground(weatherId) {
             </div>
             </section>
     }
-    else if  (weatherId > 299 && weatherId < 322) {
+    else if  (weatherID > 299 && weatherID < 322) {
         return <div className="drizzle"></div>
     }
 
+
     else if  (weatherId > 499 && weatherId < 532) {
         return <section className="rain-container">
+
             <div className="rain">
             </div>
             </section>
     }
 
-    else if  (weatherId > 599 && weatherId < 623) {
+    else if  (weatherID > 599 && weatherID < 623) {
        return <div className="snow"></div>
     }
 
-    else if  (weatherId > 700 && weatherId < 782) {
+    else if  (weatherID > 700 && weatherID < 782) {
         return <section class="mist">
             <div class="absolute-bg"></div>
             <div class="mist-container">
@@ -53,11 +56,13 @@ function determineBackground(weatherId) {
             </section>
     }
 
+
     else if  (weatherId === 800) {
         return <div className="snow"></div>;
+
     }
 
-    else if (weatherId > 800 && weatherId < 805) {
+    else if (weatherID > 800 && weatherID < 805) {
         return <div className="clouds"></div>
             
     }
