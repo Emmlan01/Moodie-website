@@ -42,7 +42,11 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
     }
   
     return (
-      <div className="login">
+      <div>
+        <div className="flex place-content-center mt-20 font-Rubik-Puddles text-gray-300 rounded text-9xl ">
+                Moodie
+        </div>   
+      <div className="center-fullscreen">
         <div className="loginFormation">
           <input type="email" id="email" className="loginBox" onChange={setEmailACB} placeholder="Email" />
           <input type="password" id="password" className="loginBox" onChange={setPasswordACB} placeholder="Password" />
@@ -65,6 +69,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
             {/* Log in as a guest <NavLink to="/home">here</NavLink>    {/*Ändra path så vi kommer till startsidan och kan generera en film som gäst */}
           </div>
         </div>
+      </div>
       </div>
       );
 }

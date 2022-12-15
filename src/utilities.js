@@ -33,7 +33,7 @@ function determineBackground(weatherId) {
     }
 
     else if  (weatherId > 499 && weatherId < 532) {
-        return <section class="rain-container">
+        return <section className="rain-container">
             <div className="rain">
             </div>
             </section>
@@ -54,7 +54,7 @@ function determineBackground(weatherId) {
     }
 
     else if  (weatherId === 800) {
-        return;
+        return <div className="snow"></div>;
     }
 
     else if (weatherId > 800 && weatherId < 805) {

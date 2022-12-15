@@ -17,7 +17,7 @@ export default function Weather(props) {
     // This should most likely be deprecated later on.
     function initialGetCurrentWeather(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
-        props.model.getCurrentWeather(5, 25, weatherPromiseState, notify)
+        props.model.getCurrentWeather(-70, 0, weatherPromiseState, notify)
     }
 
     //console.log("weather props", JSON.stringify(weatherPromiseState.data.lon))
