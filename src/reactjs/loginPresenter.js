@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -7,11 +7,17 @@ import '../App.css';
 import {auth} from '../firebase';
 
 
-function LoginPresenter(){
+function LoginPresenter(props){
     const navigate = useNavigate();
     const [email, setEmail] = useState(" ");
     const [password, setPassword] = useState(" ");
     const googleProvider = new GoogleAuthProvider();
+
+    useEffect(initialGetUserLocation, []);
+
+    function initialGetUserLocation(){
+      //props.model.getUserLocation();
+    }
 
     async function signIn(){
       await

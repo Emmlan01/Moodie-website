@@ -6,9 +6,9 @@ class mainModel {
 
     constructor(){
         this.currentMovie = {};
-        this.currentWeatherID = "something";
-        this.userLatitude = "";
-        this.userLongitude = "";
+        this.currentWeatherID = "";
+        this.userLatitude = 59.334591;
+        this.userLongitude = 18.063240;
     }
 
     setCurrentWeatherID(ID){
@@ -32,6 +32,8 @@ class mainModel {
 
         if(lon === undefined) return;
 
+        console.log("fhuaeifea", lat, lon)
+
         resolvePromise(getWeather(lat, lon), weatherPromiseState, notify)
     }
 
@@ -49,7 +51,9 @@ class mainModel {
             navigator.geolocation.getCurrentPosition(setPosition.bind(this))
         }
         else{
-            console.log("Geolocation not supported.")
+            console.log("Geolocation not supported. Using the coordinates of Stockholm.")
+            this.userLatitude = 59.334591;
+            this.userLongitude = 18.063240;
         }
     }
 }

@@ -20,8 +20,9 @@ export default function Movie(props) {
     function initialGetCurrentMovieDetails(){
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
 
-        props.model.getCurrentMovieDetails(55, moviePromiseState, notify);
-        props.model.getUserLocation();
+        rerollMovieACB();
+        //props.model.getCurrentMovieDetails(55, moviePromiseState, notify);
+        
 
     }
 
