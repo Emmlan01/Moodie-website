@@ -24,7 +24,7 @@ export default function Weather(props) {
         // Testing this with a temporary id of 500. This should of course be dynamically changeable in the final app.
 
         props.model.currentWeatherID=weatherPromiseState;
-        props.model.getCurrentWeather(props.model.userLongitude, props.model.userLatitude,  weatherPromiseState, notify)
+        props.model.getCurrentWeather(props.model.userLatitude, props.model.userLongitude,  weatherPromiseState, notify)
 
     }
 

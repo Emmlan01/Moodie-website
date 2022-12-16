@@ -16,7 +16,7 @@ function LoginPresenter(props){
     useEffect(initialGetUserLocation, []);
 
     function initialGetUserLocation(){
-      //props.model.getUserLocation();
+      props.model.getUserLocation();
     }
 
     async function signIn(){
