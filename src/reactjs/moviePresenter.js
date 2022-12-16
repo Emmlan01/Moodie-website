@@ -23,7 +23,7 @@ export default function Movie(props) {
         moviePromiseStateChanged(new Object());
     }
 
-    // This function is used to reroll
+    // This function is used to reroll movies.
     async function rerollMovieACB(){
         const selectables = await rerollMovie(37);                                  // This is used to do a call to find the amount of selectable pages of movies.
         const page =  Math.floor(Math.random() * selectables.total_pages);          // This is used to select a page.

@@ -1,6 +1,8 @@
 import { getMovieDetails } from "./movieSource.js"
 import resolvePromise from "./resolvePromise.js";
 
+// DEPRECATED.
+
 class MovieModel {
 
     constructor(){

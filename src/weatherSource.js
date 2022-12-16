@@ -10,19 +10,7 @@ function treatHTTPResponseACB(response){
     return response.json();
 }
 
-/*
-function getCurrentWeather(location) {
-    function transformSearchResultsACB(response){
-        console.log("huh", response)
-        return response;
-    }
-    // fetch to get recipe info and return a (pinky)promise. Metric för att få i celsius
-    return fetch(BASE_URLWEATHER + location + "&units=metric" + "&appid=" + API_KEY, {
-        method: 'GET',
-    }
-    ).then(treatHTTPResponseACB).then(transformSearchResultsACB);
-}
-/*Hämta koordinaterna*/
+// This function is responsible for getting the weather information from the OpenWeather API.
 function getWeather(lat, lon) {
 
     function transformSearchResultsACB(response){
@@ -30,7 +18,7 @@ function getWeather(lat, lon) {
         return response;
     }
 
-    // fetch to get recipe info and return a (pinky)promise. 
+    // Fetch to get weather info. Returns a promise. 
     return fetch(BASE_URLCORD + lat + "&lon=" + lon + "&units=metric" + "&appid=" + API_KEY, {
         method: 'GET',
     }
