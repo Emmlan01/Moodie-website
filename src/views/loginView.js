@@ -48,26 +48,27 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
         </div>   
       <div className="center-fullscreen">
         <div className="loginFormation">
-          <input type="email" id="email" className="loginBox" onChange={setEmailACB} placeholder="Email" />
-          <input type="password" id="password" className="loginBox" onChange={setPasswordACB} placeholder="Password" />
-          <button className="p-2.5 mb-0.5 bg-[rgb(98,147,238)]" onClick={logInWithEmailAndPasswordACB}>
+          <input type="email" id="email" className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onChange={setEmailACB} placeholder="Email" />
+          <input type="password" id="password" className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onChange={setPasswordACB} placeholder="Password" />
+          <button className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onClick={logInWithEmailAndPasswordACB}>
             Login
           </button>
-          <button className="p-2.5 mb-0.5 bg-[rgb(98,147,238)]" onClick={logInWithGoogle}>
+          <button className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onClick={logInWithGoogle}>
             Login with Google
           </button>
+          <div className="loginFormation">
+            <button className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onClick={guestLogin}>
+              Login as a guest
+            </button>
+            {/* Log in as a guest <NavLink to="/home">here</NavLink>    {/*Ändra path så vi kommer till startsidan och kan generera en film som gäst */}
+          </div>
           <div className="text-white">
             <NavLink to="/forgotPassword">Forgot Password</NavLink>
           </div>
           <div className="text-white">
             Register an account! <NavLink to="/register">Register here</NavLink>
           </div>
-          <div className="text-white">
-            <button className="p-2.5 mb-0.5 bg-[rgb(98,147,238)]" onClick={guestLogin}>
-              Log in as a guest
-            </button>
-            {/* Log in as a guest <NavLink to="/home">here</NavLink>    {/*Ändra path så vi kommer till startsidan och kan generera en film som gäst */}
-          </div>
+          
         </div>
       </div>
       </div>
