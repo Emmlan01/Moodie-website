@@ -24,8 +24,6 @@ export default function resolvePromise(promise, promiseState, notify){
     function saveErrorACB(err)  { 
         if(promiseState.promise !== promise) return;
             promiseState.error = err
-            /* TODO same check as above */
-            /* TODO save err in promiseState, as before */
             
             if(notify){
                 notify();

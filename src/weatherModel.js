@@ -1,6 +1,7 @@
 import resolvePromise from "./resolvePromise";
 import { getWeather } from "./weatherSource.js"
 
+// DEPRECATED.
 
 class WeatherModel {
 
