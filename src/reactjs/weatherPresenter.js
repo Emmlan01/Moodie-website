@@ -11,7 +11,6 @@ export default function Weather(props) {
     const[, weatherPromiseStateChanged] = useState();
 
     function getWeatherPromiseState(){
-        console.log("hello there")
         //return weatherPromiseState;
     }
 

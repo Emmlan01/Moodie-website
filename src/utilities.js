@@ -58,8 +58,7 @@ function determineBackground(weatherID) {
 
 
     else if  (weatherID === 800) {
-        return <div className="snow"></div>;
-
+        return;
     }
 
     else if (weatherID > 800 && weatherID < 805) {

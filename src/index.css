@@ -1,6 +1,6 @@
 body {
   background: url(./assets/city.png);
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.8);
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.65);
     background-repeat: no-repeat;
     background-attachment: fixed;
     -o-background-size: cover;
