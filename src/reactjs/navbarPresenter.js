@@ -31,13 +31,14 @@ export default function Navbar(props) {
         console.log("signout")
         if (guestLoggedIn !== 'false') {
           localStorage.setItem('guestLoggedIn', 'false')
+          props.model.setNumberOfMovies(0)
           navigate("/");
         } 
         else {
           signOut(auth).then(() => {
             console.log("test", auth)
            // number = 0;
-           // props.model.setNumberOfMovies(props.number + 10);
+            props.model.setNumberOfMovies(10)
             navigate("/");
             props.model.numberOfMovies = 0;
             console.log("signed out successful")
