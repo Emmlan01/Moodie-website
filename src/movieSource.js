@@ -4,7 +4,6 @@ import { API_KEY, BASE_URL } from "./movieConfig";
 function treatHTTPResponseACB(response){
 
     if(!response.ok)  {
-        console.log("hej!")
         throw new Error("Something that wasn't supposed to happen, happened: "+response.status);
     }
     
@@ -14,7 +13,6 @@ function treatHTTPResponseACB(response){
 function getMovieDetails(params) {
 
     function transformSearchResultsACB(response){
-        console.log("huh", response)
         return response;
     }
 

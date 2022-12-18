@@ -1,18 +1,8 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default
 function NavbarView (props) {
-
-  console.log("navview", props)
-
-
-function navigateHomeACB() {
-  props.navigateHome()
-}
-
-function navigateAboutusACB() {
-  props.navigateAboutus()
-}
 
 function logOutACB() {
   props.logOut()
@@ -28,10 +18,10 @@ return(<nav className="dark:bg-neutral-900 border-b-2 border-white fixed w-full 
 
   <ul className="flex p-4 flex-row space-x-8 mt-0 dark:bg-neutral-900">
     <li>
-      <a href="" onClick={navigateHomeACB} className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">Home</a>
+      <NavLink to="/home" className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">Home</NavLink>
     </li>
     <li>
-      <a href="" onClick={navigateAboutusACB} className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">About Us</a>
+      <NavLink to="/about-us" className="block text-gray-300 font-semibold rounded md:dark:hover:text-white">About Us</NavLink>
     </li>
   </ul>
 </div>
