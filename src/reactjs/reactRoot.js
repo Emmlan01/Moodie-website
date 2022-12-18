@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import { observerRecap, firebaseModelPromise, updateFirebaseFromModel, updateModelFromFirebase } from "../firebaseModel.js";
+import { observerRecap, firebaseModelPromise, updateFirebaseFromModel, updateModelFromFirebase } from "../firebase.js";
 import resolvePromise from "../resolvePromise.js";
 import promiseNoData from "../views/promiseNoData.js";
-import mainModel from "../mainModel.js";
-import firebaseConfig from "../firebaseConfig.js"
-import { getDishDetails } from "../dishSource";
+import firebaseConfig from "../firebase.js"
 
 const App = require("/src/views/app.js").default;
 
@@ -13,27 +11,28 @@ const App = require("/src/views/app.js").default;
 
 // Define the ReactRoot component
 function ReactRoot() {
-    const [promiseState] = React.useState({promise: {}, data: null , error: null});
+    const [moviePromiseState] = React.useState({promise: {}, data: null , error: null});
     const [, rerender] = React.useState({});
 
+    useEffect(resolveCB, [])
+    
     function resolveCB() {
-        resolvePromise(firebaseModelPromise(), promiseState, notifyACB);
+        resolvePromise(firebaseModelPromise(), moviePromiseState, notifyACB);
     }
 
     function notifyACB() {
-        console.log('hit', promiseState)
-        if (promiseState.data) {           //om sann
-            updateFirebaseFromModel(promiseState.data);              //Uppdaterar vi firebase från båda håller 
-            updateModelFromFirebase(promiseState.data);
+        console.info('hit', moviePromiseState)
+        if (moviePromiseState.data) {           //om sann
+            updateFirebaseFromModel(moviePromiseState.data);              //Uppdaterar vi firebase från båda håller 
+            updateModelFromFirebase(moviePromiseState.data);
             rerender(new Object());
         }
     }
-    useEffect(resolveCB, [])
 
-     if (promiseState.data) {
-        return <div> <App model={promiseState.data} /></div>;
+     if (moviePromiseState.data) {
+        return <div> <App model={moviePromiseState.data} /></div>;
     } else {
-        return <div>{promiseNoData(promiseState)}</div>
+        return <div>{promiseNoData(moviePromiseState)}</div>
     }
 }
 

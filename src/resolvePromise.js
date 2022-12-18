@@ -8,6 +8,7 @@ export default function resolvePromise(promise, promiseState, notify){
     }
 
     if(notify){
+        console.log(typeof notify)
         notify();
     }
 

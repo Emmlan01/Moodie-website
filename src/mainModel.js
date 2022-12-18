@@ -73,6 +73,14 @@ class mainModel {
        }
        this.observers = this.observers.filter(filterObserversCB)
    }
+
+   notifyObservers(payload){
+    //console.info("notiyfyOvs", payload);
+    function invokeObserverCB(obs){obs(payload)}
+    try{
+    this.observers.forEach(invokeObserverCB)
+    }catch(err){console.log(err)}
+}
  
    setNumberOfMovies(nr){
        if (nr < 0 || !Number.isInteger(nr)){
@@ -80,7 +88,7 @@ class mainModel {
        }
        if (this.numberOfMovies !== nr){
            this.numberOfMovies = nr
-          // this.notifyObservers({nrGuests:nr})
+           this.notifyObservers({num:nr})
        }
    }
  
