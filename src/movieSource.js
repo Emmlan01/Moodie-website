@@ -66,6 +66,8 @@ function rerollMovie(genres, selectpage) {
 
 // This function chooses a movie genre based on the weatherID and returns the genre ID.
 function determineMovieGenre(weatherID) {
+    let randomizer = Math.random();
+
     if (weatherID > 199 && weatherID < 233)         // Thunder, return Horror
         return 27;
     else if  (weatherID > 299 && weatherID < 322)   // Drizzle, return Drama
@@ -76,10 +78,30 @@ function determineMovieGenre(weatherID) {
         return 10402;
     else if  (weatherID > 700 && weatherID < 782)   // Mist, return Mystery
         return 9648;
-    else if  (weatherID === 800)                    // Clear, return Comedy
-        return 35;
-    else if (weatherID > 800 && weatherID < 805) {  // Cloudy, return Western
-        return 37;
+    else if  (weatherID === 800){                   // Clear, return Comedy, Romance or Adventure
+        if(randomizer < 0.3){
+            return 35
+        }
+        
+        if(randomizer > 0.3 && randomizer < 0.7){
+            return 10749
+        }
+        
+        else { return 12 }
+    }                
+    else if (weatherID > 800 && weatherID < 805) {  // Cloudy, return Western, Crime or War
+        
+        if(randomizer < 0.3){
+            return 37
+        }
+        
+        if(randomizer > 0.3 && randomizer < 0.7){
+            return 80
+        }
+        
+        else { return 10752 }
+        
+
     }
 }
 /*
