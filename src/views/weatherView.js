@@ -12,7 +12,7 @@ return(
     
   <div>
       <div>
-      {determineBackground(props.weatherData.weather[0].id)}
+      {determineBackground(802)}
       </div>
 
       <span>
