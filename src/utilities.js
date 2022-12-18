@@ -48,7 +48,6 @@ function determineBackground(weatherID) {
 
     else if  (weatherID > 700 && weatherID < 782) {
         return <section class="mist">
-            <div class="absolute-bg"></div>
             <div class="mist-container">
             <div class="mist-img mist-img-first"></div>
             <div class="mist-img mist-img-second"></div>

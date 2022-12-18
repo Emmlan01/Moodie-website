@@ -43,15 +43,7 @@ export default function Navbar(props) {
     }
 }
 
-function navigateHomeACB() {
-    navigate("/home")
-  }
-  
-  function navigateAboutusACB() {
-    navigate("/about-us")
-  }
-
     // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
-    return <div>{<NavbarView authChange={onAuthStateChanged} logOut={logOut} navigateHome = {navigateHomeACB} navigateAboutus={navigateAboutusACB}/>}</div>
+    return <div>{<NavbarView authChange={onAuthStateChanged} logOut={logOut}/>}</div>
 
 }

@@ -2,16 +2,11 @@
 export default
 function MovieView(props) {
 
-    console.log(props)
+        console.log(props.movieData)
 
         function rerollMovieACB(onClick) {
             props.clickOnReroll(props.movieData.id)
         }
-
-        //if (!props.movieData || props.movieData.length === 0)
-        //{
-        //return null;
-        //}
 
         return(<div>
             <img className="object-contain h-60 m-auto rounded-3xl shadow-sm" src={"https://image.tmdb.org/t/p/w500"+props.movieData.backdrop_path}
@@ -25,6 +20,9 @@ function MovieView(props) {
                 <div className="grid place-items-center font-bold py-3 rounded text-white text-4xl">
                     {props.movieData.original_title}
                 </div>
+                <div className="flex place-content-center space-x-4 items-center font-bold py-3 rounded text-white"> 
+                {props.movieData.overview}
+            </div>
                 <div className="flex place-content-center space-x-4 items-center font-bold py-3 rounded text-white">
                     {props.movieData.vote_average === 0 ? "Not available" : (props.movieData.vote_average).toFixed(1)+"/10"}
                     <img className="h-5 w-5" src="https://i.imgur.com/nASCFNb.png"></img>
