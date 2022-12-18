@@ -2,6 +2,7 @@
 export default
 function MovieView(props) {
 
+    console.log(props.movieData)
         function rerollMovieACB(onClick) {
             props.clickOnReroll(props.movieData.id)
             props.onNumberChange(props.number + 1)          //Counter ökar med 1 när reroll knappen trycks. 
