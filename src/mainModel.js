@@ -78,7 +78,7 @@ class mainModel {
     //console.info("notiyfyOvs", payload);
     function invokeObserverCB(obs){obs(payload)}
     try{
-    this.observers.forEach(invokeObserverCB)
+    if(this.observers){this.observers.forEach(invokeObserverCB)}
     }catch(err){console.log(err)}
 }
  

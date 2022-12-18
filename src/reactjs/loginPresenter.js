@@ -35,6 +35,7 @@ function LoginPresenter(props){
     function guestLogin(){
       localStorage.setItem('guestLoggedIn', 'true')
       navigate("/home")
+      props.model.numberOfMovies = 0;     //Set guest counter to 0 everytime a guest logs in.
     }
 
 
@@ -43,21 +44,13 @@ function LoginPresenter(props){
   try {
     const res = await signInWithPopup(auth, googleProvider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
         navigate("/home"); 
       });
   }
   catch (error) {
     // Handle Errors here.
     console.error(error);
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
   }
 };
  

@@ -6,10 +6,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const App = require("./App.js").default;
 
-
-// Add relevant imports here 
-
-// Define the ReactRoot component
 function ReactRoot() {
     const [moviePromiseState] = React.useState({ promise: {}, data: null, error: null });
     const [, rerender] = React.useState({});
@@ -29,14 +25,13 @@ function ReactRoot() {
     }
 
     function notifyACB() {
-        console.info('hit', moviePromiseState)
         if (moviePromiseState.data) {           //om sann
             updateFirebaseFromModel(moviePromiseState.data);              //Uppdaterar vi firebase från båda håller 
             updateModelFromFirebase(moviePromiseState.data);
             rerender(new Object());
         }
     }
-console.log('test', moviePromiseState.data)
+
     if (moviePromiseState.data) {
         return <div> <App model={moviePromiseState.data} /></div>;
     } else {

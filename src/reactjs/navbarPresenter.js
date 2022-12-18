@@ -15,30 +15,19 @@ export default function Navbar(props) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           const uid = user.uid;
-          // ...
         } else if (guestLoggedIn === 'false') {
-          // User is signed out
-          // ...
-          props.model.numberOfMovies = 0;
           navigate("/");
         }
     });
 
    function logOut1(){
-    //  const logOut = () => {
-        //logout function
         if (guestLoggedIn !== 'false') {
           localStorage.setItem('guestLoggedIn', 'false')
-          props.model.setNumberOfMovies(0)
           navigate("/");
         } 
         else {
           signOut(auth).then(() => {
-           // number = 0;
-            props.model.setNumberOfMovies(10)
             navigate("/");
-            props.model.numberOfMovies = 0;
-            // Sign-out successful.
           }).catch((error) => {
             console.error(error);
           // An error happened.
