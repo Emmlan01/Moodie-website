@@ -6,6 +6,7 @@ function MovieView(props) {
 
         function rerollMovieACB(onClick) {
             props.clickOnReroll(props.movieData.id)
+            props.onNumberChange(props.number + 1)          //Counter ökar med 1 när reroll knappen trycks. 
         }
 
         return(<div>
@@ -32,6 +33,7 @@ function MovieView(props) {
                 <button className="transform bg-white text-black text-2xl font-bold my-5 py-2 px-2 rounded drop-shadow mt-3 transition duration-200 hover:scale-105" onClick={rerollMovieACB}>
                 Get a new movie!
             </button>
+            <span className="text-white">{props.number} clicks on ''Get a new movie''' button</span>
             </div>
             </div>
             </div>);

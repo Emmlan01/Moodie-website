@@ -19,22 +19,25 @@ export default function Navbar(props) {
         } else if (guestLoggedIn === 'false') {
           // User is signed out
           // ...
+          props.model.numberOfMovies = 0;
           navigate("/");
         }
-      });
+    });
 
-    const logOut = () => {
+   function logOut1(){
+    //  const logOut = () => {
         //logout function
-        console.log("signout")
         if (guestLoggedIn !== 'false') {
           localStorage.setItem('guestLoggedIn', 'false')
+          props.model.setNumberOfMovies(0)
           navigate("/");
         } 
         else {
           signOut(auth).then(() => {
-            console.log("test", auth)
+           // number = 0;
+            props.model.setNumberOfMovies(10)
             navigate("/");
-            console.log("signed out successful")
+            props.model.numberOfMovies = 0;
             // Sign-out successful.
           }).catch((error) => {
             console.error(error);
@@ -42,8 +45,6 @@ export default function Navbar(props) {
         });
     }
 }
-
     // Returns either the promiseNoData function (no data, spinner image, etc) or the content defined in the MovieView.
-    return <div>{<NavbarView authChange={onAuthStateChanged} logOut={logOut}/>}</div>
-
+    return (<div>{<NavbarView logOut={logOut1}/>}</div>)
 }

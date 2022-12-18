@@ -24,9 +24,7 @@ function LoginPresenter(props){
       signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
         navigate("/home")
-        console.log(user);
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -49,9 +47,7 @@ function LoginPresenter(props){
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         // The signed-in user info.
-        const user = result.user;
         navigate("/home"); 
-        console.log(user);
       });
   }
   catch (error) {
