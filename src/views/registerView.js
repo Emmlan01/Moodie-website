@@ -19,9 +19,9 @@ function Register(props){
     return (
         <div className="login">
           <div className="loginFormation">
-            <input type="email" id="email" className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onChange={setEmailACB} placeholder="Email"/>
-            <input type="password" id="password" className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onChange={setPasswordACB} placeholder="Password"/>
-            <button className="block text-black bg-white px-2 py-0.5 font-semibold rounded transition duration-200 hover:scale-105" onClick={registerWithEmailPasswordACB}>
+            <input type="email" id="email" className="block text-black bg-white my-px px-2 py-2 font-semibold rounded transition duration-200 hover:scale-105" onChange={setEmailACB} placeholder="Email"/>
+            <input type="password" id="password" className="block text-black bg-white my-px px-2 py-2 font-semibold rounded transition duration-200 hover:scale-105" onChange={setPasswordACB} placeholder="Password"/>
+            <button className="block text-black bg-white my-px px-2 py-2 font-semibold rounded transition duration-200 hover:scale-105" onClick={registerWithEmailPasswordACB}>
               Register
             </button>
             <div className="text-white">
