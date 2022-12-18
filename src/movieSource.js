@@ -30,7 +30,6 @@ function getMovieDetails(params) {
 function getMovieGenres() {
 
     function transformSearchResultsACB(response){
-        console.log("Movie genres here: ", response)
         return response;
     }
 
@@ -49,8 +48,6 @@ function rerollMovie(genres, selectpage) {
     if(selectpage) pageparam = "&page=" + selectpage;
 
     function transformSearchResultsACB(response){
-        //console.log(BASE_URL+ endpoint + "?api_key=" + API_KEY + "&with_genres=" + genres)
-        //console.log("Movie list based on genre: ", response)
         return response;
     }
 
