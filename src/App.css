@@ -65,8 +65,8 @@
   min-height: 100%;
   width: 100%;
   background-image: url(./assets/rain.png);
-  background-size: cover;
   animation: rain 0.1s reverse linear infinite;
+  content: "";
 }
 
 .rain-container {
@@ -83,7 +83,7 @@
       background-position: 0% 0%;
   }
   100%{
-      background-position: 15% 100%;
+      background-position: 20% 100%;
   }
 }
 .thunder {
@@ -160,7 +160,12 @@
   right: 0;
   z-index: -4;
   background-image: 
-  radial-gradient(3px 8px at 300px 250px, #fff 50%, transparent);
+  radial-gradient(1px 7px at 650px 650px, #fff 50%, transparent),
+  radial-gradient(1px 7px at 500px 100px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 50px 200px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 150px 300px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 250px 400px, #fff 50%, transparent), 
+  radial-gradient(1px 7px at 350px 500px, #fff 50%, transparent);
   background-size: 650px 650px;
   animation: drizzle 0.5s linear infinite;
   content: "";
