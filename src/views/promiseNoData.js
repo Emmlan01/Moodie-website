@@ -6,7 +6,11 @@ export default function promiseNoData(promiseState){
 
     // If there is an active promise in the promiseState but we have not yet received any data (or error), we display some spinner image.
     if(!promiseState.data && !promiseState.error) {
-        return(<img src="../content/bush_spinner.png" alt="Confused_Dubya.PNG"></img>);
+        return(<div className="center-center">
+        <div className="loadingio-spinner-spinner-agb8os98fdn"><div className="ldio-ndvytzom9cg">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div></div>
+        </div>);
     }
 
     // If there is an error, log it in the console.

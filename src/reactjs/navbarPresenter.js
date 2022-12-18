@@ -1,15 +1,15 @@
 import NavbarView from "../views/navbarView.js"
+import { useState, useEffect } from "react";
 import { signOut} from 'firebase/auth';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate} from "react-router-dom";
 
 export default function Navbar(props) {
 
-    const auth = getAuth();
     const navigate = useNavigate();
     const guestLoggedIn = localStorage.getItem('guestLoggedIn')
+    const auth = getAuth();
 
-    //Firebase handles persistance by default. This means that we need to call this function to check whether a user is logged out or not.
     onAuthStateChanged(auth, (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
