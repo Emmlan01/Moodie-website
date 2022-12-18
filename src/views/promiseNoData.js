@@ -11,7 +11,6 @@ export default function promiseNoData(promiseState){
 
     // If there is an error, log it in the console.
     if(promiseState.error){
-        console.log(promiseState.error.error);
         return(<div>{promiseState.error.error}</div>);
     }
 }

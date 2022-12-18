@@ -30,7 +30,6 @@ export default function Movie(props) {
    }
 
    function onNumberChangeACB(number) {
-          console.log("test2", number);
           props.model.setNumberOfMovies(number);
       }
  
@@ -81,7 +80,6 @@ export default function Movie(props) {
                page =  Math.floor(Math.random() * selectables.total_pages);         
            }        
        const selectableMovies = await rerollMovie(genre, page);                                // This gets the selected page.
-       console.log("slenvsroi: ", selectables)
        const movie = selectableMovies.results[Math.floor(Math.random() * 20)];                 // This generates a movie ID from one of the fetched movies.
        props.model.getCurrentMovieDetails(movie.id, moviePromiseState, notify);                // This finally calls getCurrentMovieDetails with the aqquired movie ID.
       

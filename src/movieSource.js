@@ -4,7 +4,6 @@ import { API_KEY, BASE_URL } from "./movieConfig";
 function treatHTTPResponseACB(response){
 
     if(!response.ok)  {
-        console.log("hej!")
         throw new Error("Something that wasn't supposed to happen, happened: "+response.status);
     }
     
@@ -14,7 +13,6 @@ function treatHTTPResponseACB(response){
 function getMovieDetails(params) {
 
     function transformSearchResultsACB(response){
-        console.log("huh", response)
         return response;
     }
 
@@ -32,7 +30,6 @@ function getMovieDetails(params) {
 function getMovieGenres() {
 
     function transformSearchResultsACB(response){
-        console.log("Movie genres here: ", response)
         return response;
     }
 
@@ -51,8 +48,6 @@ function rerollMovie(genres, selectpage) {
     if(selectpage) pageparam = "&page=" + selectpage;
 
     function transformSearchResultsACB(response){
-        //console.log(BASE_URL+ endpoint + "?api_key=" + API_KEY + "&with_genres=" + genres)
-        //console.log("Movie list based on genre: ", response)
         return response;
     }
 

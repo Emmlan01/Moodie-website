@@ -15,8 +15,6 @@ function RegisterPresenter(){
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) =>{
         //signed in
-        const user = userCredential.user;
-        console.log(user);
         navigate("/")
       })
       .catch((error) => {

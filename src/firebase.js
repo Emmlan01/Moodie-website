@@ -1,19 +1,19 @@
 import { initializeApp } from "firebase/app";
 import "firebase/firestore";
-import {getDatabase, ref, set} from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 import "firebase/database";
 import { getFirestore } from "firebase/firestore";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/database'
- import mainModel from "./mainModel"
- import { getMovieDetails } from "./movieSource";
+import mainModel from "./mainModel"
+import { getMovieDetails } from "./movieSource";
 
 
 
 
-import {getAuth} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 //Our firebaseConfi
 const firebaseConfig = {
@@ -30,6 +30,7 @@ const firebaseConfig = {
 //This will use our config to recognize the project and initialize authentication and database modules.
 const app = firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth(app);
+let userId
 
 // function writeUserData(userId, email) {
 //   const db = getDatabase();
@@ -37,54 +38,65 @@ export const auth = firebase.auth(app);
 //     email: email,
 //   });
 // }
-const REF="HEJ";
-firebase.database().ref(REF+"/test").set("duy");
-firebase.database().ref(REF+"/hej").set("hej");
+const REF = "userMovies";
 
 
-  function observerRecap(model) {
-    function payloadLogCB(payload){console.log(payload)}
-    model.addObserver(payloadLogCB)
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    userId = user.uid
+    console.log('asd', user.uid);
+  } else {
+    userId = 'guest'
   }
+});
 
-  function firebaseModelPromise(){
-    function makeBigPromiseACB(firebaseData){
-        if(firebaseData.val()){
-            function createModelACB(){
-                return new mainModel(firebaseData.val().guests)
-            }
-            const dishPromiseArray = Object.keys(firebaseData.val().movies).map(function makeDishPromiseCB(movieId){
-                return getMovieDetails(movieId);
-            });
-            return Promise.all(dishPromiseArray).then(createModelACB);          //vet ej
-        }else{
-            return new mainModel(0);
-        }
-    }
-    return firebase.database().ref(REF+"/model").once("value").then(makeBigPromiseACB);
+
+function observerRecap(model) {
+  function payloadLogCB(payload) { console.log('observerRecap', payload) }
+  model.addObserver(payloadLogCB)
 }
 
-  function updateFirebaseFromModel(model) {
-    function setPayloadInFbCB(payload){
-      console.info("payload", payload);
-      debugger
-        if(payload.num){
-          console.log("hsdu", payload);
-            firebase.database().ref(REF + "/model/movies").set(payload.num);
-        }
+function firebaseModelPromise() {
+  function makeBigPromiseACB(firebaseData) {
+    return new mainModel(0);
+    // if (firebaseData.val()) {
+    //   function createModelACB() {
+    //     return new mainModel(firebaseData.val().guests)
+    //   }
+    //   const dishPromiseArray = Object.keys(firebaseData.val().movies).map(function makeDishPromiseCB(movieId) {
+    //     return getMovieDetails(movieId);
+    //   });
+    //   return Promise.all(dishPromiseArray).then(createModelACB);          //vet ej
+    // } else {
+    //   return new mainModel(0);
+    // }
+  }
+  return firebase.database().ref(REF + "/users").once("value").then(makeBigPromiseACB);
+}
+
+function updateFirebaseFromModel(model) {
+  function setPayloadInFbCB(payload) {
+    if (payload.num) {
+      console.log("hsdu", payload);
+      firebase.database().ref(REF + "/users/" + userId + "/movies").set(payload.num);
     }
-    model.addObserver(setPayloadInFbCB)
-    return;
+  }
+  model.addObserver(setPayloadInFbCB)
+  return;
 }
 
 function updateModelFromFirebase(model) {
-    firebase.database().ref(REF+"/model/movies").on("value", 
-    function moviesChangedInFirebaseACB(firebaseData){
+ 
+    firebase.database().ref(REF + "/users/" + userId + "/movies").on("value",
+      function moviesChangedInFirebaseACB(firebaseData) {
         model.setNumberOfMovies(firebaseData.val());
-    });
-} 
+      });
+  // } else {
+  //   model.setNumberOfMovies(0);
+  // }
+}
 
-export {observerRecap, firebaseModelPromise,updateFirebaseFromModel, updateModelFromFirebase, app};
+export { observerRecap, firebaseModelPromise, updateFirebaseFromModel, updateModelFromFirebase, app };
 // export {app};
 
 // function writeUserData(userId, email){

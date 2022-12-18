@@ -1,21 +1,29 @@
 import React, { useEffect } from "react";
-import { observerRecap, firebaseModelPromise, updateFirebaseFromModel, updateModelFromFirebase } from "../firebase.js";
-import resolvePromise from "../resolvePromise.js";
-import promiseNoData from "../views/promiseNoData.js";
-import firebaseConfig from "../firebase.js"
+import { firebaseModelPromise, updateFirebaseFromModel, updateModelFromFirebase } from "./firebase.js";
+import resolvePromise from "./resolvePromise.js";
+import promiseNoData from "./views/promiseNoData.js";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const App = require("/src/views/app.js").default;
+const App = require("./App.js").default;
 
 
 // Add relevant imports here 
 
 // Define the ReactRoot component
 function ReactRoot() {
-    const [moviePromiseState] = React.useState({promise: {}, data: null , error: null});
+    const [moviePromiseState] = React.useState({ promise: {}, data: null, error: null });
     const [, rerender] = React.useState({});
 
     useEffect(resolveCB, [])
-    
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            updateFirebaseFromModel(moviePromiseState.data);              //Uppdaterar vi firebase från båda håller 
+            updateModelFromFirebase(moviePromiseState.data);
+        }
+    });
+
     function resolveCB() {
         resolvePromise(firebaseModelPromise(), moviePromiseState, notifyACB);
     }
@@ -28,13 +36,13 @@ function ReactRoot() {
             rerender(new Object());
         }
     }
-
-     if (moviePromiseState.data) {
+console.log('test', moviePromiseState.data)
+    if (moviePromiseState.data) {
         return <div> <App model={moviePromiseState.data} /></div>;
     } else {
         return <div>{promiseNoData(moviePromiseState)}</div>
     }
 }
 
-    // Export the ReactRoot component
-    export default ReactRoot;
+// Export the ReactRoot component
+export default ReactRoot;

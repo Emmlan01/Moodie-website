@@ -12,7 +12,6 @@ export default function Navbar(props) {
     //Firebase handles persistance by default. This means that we need to call this function to check whether a user is logged out or not.
     onAuthStateChanged(auth, (user) => {
         if (user) {
-          console.log("användare", user)
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           const uid = user.uid;
@@ -28,7 +27,6 @@ export default function Navbar(props) {
    function logOut1(){
     //  const logOut = () => {
         //logout function
-        console.log("signout")
         if (guestLoggedIn !== 'false') {
           localStorage.setItem('guestLoggedIn', 'false')
           props.model.setNumberOfMovies(0)
@@ -36,12 +34,10 @@ export default function Navbar(props) {
         } 
         else {
           signOut(auth).then(() => {
-            console.log("test", auth)
            // number = 0;
             props.model.setNumberOfMovies(10)
             navigate("/");
             props.model.numberOfMovies = 0;
-            console.log("signed out successful")
             // Sign-out successful.
           }).catch((error) => {
             console.error(error);
