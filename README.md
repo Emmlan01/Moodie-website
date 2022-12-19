@@ -46,21 +46,11 @@ FILE STRUCTURE:
   
   index.js - Root element of the entire project, call to create model.
   
-  logo.svg - Default react logo, will be removed
-  
   mainModel.js - Model used to keep track of some data needed for the site to function. The site uses the MVP design pattern, where this model is the M.
-  
-  movieModel.js - Old model, replaced by mainModel. Deprecated.
   
   movieSource.js - Contains some functions used to fetch data about movies.
   
-  reportWebVitals.js - React default
-  
   resolvePromise.js - Used to resolve promises. Also accepts notify functions which may be used to re-render the app, etc.
-  
-  setupTests.js - React default
-  
-  weatherModel.js - Old and replaced by mainModel. Deprecated.
   
   weatherSource.js - Contains some functions used to fetch data about time and weather.
   
