@@ -1,4 +1,4 @@
-import { determineBackground } from "../utilities.js";
+import { determineWeather, determineBackground } from "../utilities.js";
 import React from "react";
 import { signOut} from 'firebase/auth';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -12,7 +12,7 @@ return(
     
   <div>
       <div>
-      {determineBackground(802)}
+      {determineBackground(props.weatherData.weather[0].id)}
       </div>
 
       <span>
