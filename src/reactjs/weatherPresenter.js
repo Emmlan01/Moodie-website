@@ -8,10 +8,6 @@ export default function Weather(props) {
     const[weatherPromiseState] = useState({});
     const[, weatherPromiseStateChanged] = useState();
 
-    function getWeatherPromiseState(){
-        //return weatherPromiseState;
-    }
-
     // Used to do an initial get when the weather component is created
     useEffect(initialGetCurrentWeather, []);
 
